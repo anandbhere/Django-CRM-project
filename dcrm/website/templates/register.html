@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-6 offset-md-3 border border-secondory border-3 rounded-4 ">
+    <h2 class="m-3 text-center"> Welcome to register page</h2>
+    <h2 class="m-3 text-center">Register</h2>
+
+
+<form method="POST"  class="m-4">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Your Form Has Errors
+            {% for field in form %}
+
+            {% if field.errors %}
+
+            {{field.errors}}
+
+            {% endif %}
+            {% endfor %}
+            <button class="btn btn-close" type="button" data-bs-dismiss="alert" area-label="Close"></button>
+
+
+        </div>
+        {% endif %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-secondary">Submit</button>
+
+
+
+    </form>
+
+</div>
+{% endblock %}
